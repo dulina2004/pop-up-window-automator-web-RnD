@@ -15,7 +15,7 @@ A modern, user-friendly web application for managing and automating popup window
 
 ## Demo
 
-[Live Demo](https://your-demo-link-here.com)
+[Live Demo](https://dulina2004.github.io/pop-up-window-automator-web-RnD/)
 
 ## Technologies Used
 
@@ -53,13 +53,13 @@ The application implements advanced window management features:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/popup-controller.git
+git clone https://github.com/dulina2004/pop-up-window-automator-web-RnD.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd popup-controller
+cd pop-up-window-automator-web-RnD
 ```
 
 3. Open `index.html` in your preferred browser
