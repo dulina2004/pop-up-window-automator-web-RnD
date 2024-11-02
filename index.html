@@ -4,205 +4,20 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Popup Controller</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            body {
-                font-family: "Inter", system-ui, -apple-system, sans-serif;
-                min-height: 100vh;
-                background: linear-gradient(135deg, #1a1c26 0%, #242837 100%);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-                gap: 2rem;
-                color: #e1e1e1;
-            }
-
-            .container,
-            .dashboard {
-                background: rgba(31, 34, 53, 0.7);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-radius: 20px;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 2.5rem;
-                width: 100%;
-                max-width: 500px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            }
-
-            .dashboard {
-                max-width: 300px;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .stat-card {
-                background: rgba(26, 28, 38, 0.7);
-                border-radius: 12px;
-                padding: 1.2rem;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .stat-label {
-                font-size: 0.9rem;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: #8b8fa3;
-                margin-bottom: 0.5rem;
-            }
-
-            .stat-value {
-                font-size: 2rem;
-                font-weight: 600;
-                color: #e1e1e1;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            }
-
-            .progress-bar {
-                width: 100%;
-                height: 8px;
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 4px;
-                margin-top: 1rem;
-                overflow: hidden;
-            }
-
-            .progress-fill {
-                height: 100%;
-                background: linear-gradient(90deg, #3d5afe 0%, #84ffff 100%);
-                width: 0%;
-                transition: width 0.3s ease;
-            }
-
-            h2 {
-                color: #e1e1e1;
-                margin-bottom: 1.5rem;
-                font-size: 1.8rem;
-                font-weight: 600;
-                text-align: center;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            }
-
-            input {
-                width: 100%;
-                padding: 1rem;
-                margin: 0.8rem 0;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 12px;
-                background: rgba(26, 28, 38, 0.7);
-                color: #e1e1e1;
-                font-size: 1rem;
-                backdrop-filter: blur(5px);
-                transition: all 0.3s ease;
-            }
-
-            input::placeholder {
-                color: #8b8fa3;
-            }
-
-            input:focus {
-                outline: none;
-                border-color: rgba(61, 90, 254, 0.5);
-                background: rgba(31, 34, 53, 0.9);
-                box-shadow: 0 0 0 2px rgba(61, 90, 254, 0.2);
-            }
-
-            .button-group {
-                display: flex;
-                gap: 1rem;
-                margin-top: 1.5rem;
-            }
-
-            button {
-                flex: 1;
-                padding: 1rem;
-                border: none;
-                border-radius: 12px;
-                cursor: pointer;
-                font-size: 1rem;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-
-            .open-btn {
-                background: linear-gradient(135deg, #3d5afe 0%, #84ffff 100%);
-                color: #1a1c26;
-            }
-
-            .open-btn:hover {
-                background: linear-gradient(135deg, #3d5afe 0%, #76e6e6 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(61, 90, 254, 0.3);
-            }
-
-            .close-btn {
-                background: linear-gradient(135deg, #ff4081 0%, #ff79b0 100%);
-                color: #fff;
-            }
-
-            .close-btn:hover {
-                background: linear-gradient(135deg, #ff3576 0%, #ff6aa6 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(255, 64, 129, 0.3);
-            }
-
-            #status {
-                margin-top: 1.5rem;
-                padding: 1rem;
-                border-radius: 12px;
-                text-align: center;
-                font-weight: 500;
-                transition: all 0.3s ease;
-                background: rgba(26, 28, 38, 0.7);
-                color: #e1e1e1;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            @media (max-width: 1024px) {
-                body {
-                    flex-direction: column;
-                }
-
-                .container,
-                .dashboard {
-                    max-width: 500px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .container,
-                .dashboard {
-                    padding: 1.5rem;
-                }
-
-                .button-group {
-                    flex-direction: column;
-                }
-
-                button {
-                    width: 100%;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <div class="container">
             <h2>Popup Controller</h2>
-            <input
-                type="text"
-                id="urlInput"
-                placeholder="Enter URL (e.g., https://example.com)"
-            />
-            <input type="text" id="counts" placeholder="Enter count" />
+            <input type="text" id="urlInput" placeholder="Enter URL" />
+            <div class="input-group">
+                <input type="number" id="counts" placeholder="Enter count" />
+                <input
+                    type="number"
+                    id="duration"
+                    placeholder="Duration (seconds)"
+                />
+            </div>
             <div class="button-group">
                 <button onclick="open0()" class="open-btn">Open Window</button>
                 <button onclick="close0()" class="close-btn">
@@ -221,6 +36,10 @@
                     <div class="progress-fill" id="progressBar"></div>
                 </div>
             </div>
+            <div class="stat-card timer">
+                <div class="stat-label">Time Remaining</div>
+                <div class="stat-value" id="timeRemaining">0s</div>
+            </div>
             <div class="stat-card">
                 <div class="stat-label">Total Cycles</div>
                 <div class="stat-value" id="totalCount">0</div>
@@ -231,110 +50,6 @@
             </div>
         </div>
 
-        <script>
-            let popupWindow = null;
-            let failsafe = false;
-            let totalCycles = 0;
-
-            async function open0() {
-                const counts =
-                    parseInt(document.getElementById("counts").value) || 0;
-                document.getElementById("cycleStatus").textContent = "Running";
-                document.getElementById("totalCount").textContent = totalCycles;
-
-                for (let i = 1; i <= counts; i++) {
-                    openPopup();
-
-                    // Update progress
-                    document.getElementById("currentCount").textContent = i;
-                    document.getElementById("progressBar").style.width =
-                        (i / counts) * 100 + "%";
-
-                    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-                    closePopup();
-                    if (failsafe) {
-                        popupWindow = null;
-                        failsafe = false;
-                        document.getElementById("cycleStatus").textContent =
-                            "Stopped";
-                        break;
-                    }
-
-                    totalCycles++;
-                    document.getElementById("totalCount").textContent =
-                        totalCycles;
-                }
-
-                if (!failsafe) {
-                    document.getElementById("cycleStatus").textContent =
-                        "Completed";
-                }
-
-                // Reset progress after completion
-                setTimeout(() => {
-                    document.getElementById("currentCount").textContent = "0";
-                    document.getElementById("progressBar").style.width = "0%";
-                }, 1500);
-            }
-
-            function close0() {
-                failsafe = true;
-                document.getElementById("cycleStatus").textContent =
-                    "Stopping...";
-            }
-
-            function openPopup() {
-                const url = document.getElementById("urlInput").value;
-                if (!url) {
-                    alert("Please enter a URL");
-                    return;
-                }
-
-                if (popupWindow && !popupWindow.closed) {
-                    popupWindow.close();
-                }
-
-                popupWindow = window.open(
-                    url,
-                    "popupWindow",
-                    "width=800,height=600"
-                );
-
-                if (popupWindow) {
-                    document.getElementById("status").textContent =
-                        "Window opened successfully";
-                    document.getElementById("status").style.backgroundColor =
-                        "rgba(61, 90, 254, 0.2)";
-                } else {
-                    document.getElementById("status").textContent =
-                        "Pop-up blocked! Please allow pop-ups for this site.";
-                    document.getElementById("status").style.backgroundColor =
-                        "rgba(255, 64, 129, 0.2)";
-                }
-            }
-
-            function closePopup() {
-                if (popupWindow && !popupWindow.closed) {
-                    popupWindow.close();
-                    document.getElementById("status").textContent =
-                        "Window closed successfully";
-                    document.getElementById("status").style.backgroundColor =
-                        "rgba(61, 90, 254, 0.2)";
-                } else {
-                    document.getElementById("status").textContent =
-                        "No window to close";
-                    document.getElementById("status").style.backgroundColor =
-                        "rgba(255, 193, 7, 0.2)";
-                }
-                popupWindow = null;
-            }
-
-            window.onbeforeunload = function () {
-                if (popupWindow && !popupWindow.closed) {
-                    popupWindow.close();
-                }
-            };
-        </script>
+        <script src="app.js"></script>
     </body>
 </html>
